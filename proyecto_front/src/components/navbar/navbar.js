@@ -1,0 +1,52 @@
+import React from 'react';
+import { Container, Navbar, Nav, Dropdown, DropdownButton, Row } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserCircle, faSeedling } from '@fortawesome/free-solid-svg-icons'
+import { deleteToken } from '../helper/token'
+
+import './navbar.css';
+
+export default class Menu extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { }
+    }
+    render() {
+        return (
+            <Navbar id="navbar" bg="primary" variant="dark">
+                <Container>
+                    <Navbar.Brand href="/home">
+                    <FontAwesomeIcon icon={faSeedling} />
+                    <span id="usuario-sub-branm">Eco Tripulantes</span>
+                    </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto">
+                                {/* <Nav.Link href="#home">Home</Nav.Link>
+                                <Nav.Link href="#link">Link</Nav.Link> */}
+                                
+                            </Nav>
+                            <DropdownButton id="dropdown-basic-button" title="usuario">
+                                <Dropdown.Header>
+                                    <Row>
+                                        <FontAwesomeIcon icon={faUserCircle} />
+                                    </Row>
+                                    <Row>
+                                        #USUARIO#
+                                    </Row>
+                                </Dropdown.Header>
+                                <Dropdown.Item href="/login">Iniciar sesión</Dropdown.Item>
+                                <Dropdown.Item href="/register">Crear cuenta</Dropdown.Item>
+                                <Dropdown.Item
+                                    onClick={() => deleteToken()}
+                                    href="/"
+                                >
+                                    Cerrar sesión
+                                </Dropdown.Item>
+                            </DropdownButton>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
+        )
+    }
+}
