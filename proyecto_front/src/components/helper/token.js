@@ -1,4 +1,4 @@
-import { TOKEN } from '../app.json'
+import { TOKEN } from '../../app.json'
 
 export function setToken(token) {
     localStorage.setItem(TOKEN, token);

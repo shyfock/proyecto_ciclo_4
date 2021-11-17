@@ -5,7 +5,7 @@ const auth = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
         const decoded = jwt.verify(token, "__recret__");
-        res.json({msg: "Usuario autenticado correctamente"})
+        //res.json(response);
         req.usuario = decoded;
         next();
     } catch (error) {

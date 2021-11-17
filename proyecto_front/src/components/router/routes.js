@@ -10,8 +10,8 @@ export default function AppRouter() {
         <Router>
             <Switch>
                 <Route exact path={['/', '/login']} component={Login}/>
-                <PrivateRoute exact path='/home' component={Home}/>
-                <PrivateRoute exact path='/empleados' component={EmpleadosBuscar}/>
+                <PrivateRoute exact path={'/home'} component={Home}/>
+                <PrivateRoute exact path={'/empleados'} component={EmpleadosBuscar}/>
                 <Route exact path={'/register'} component={Register}/>
                 <Route
                     path={'*'}

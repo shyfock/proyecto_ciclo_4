@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react'
-import { API_HOST as host } from '../app.json'
+import { API_HOST as host } from '../../app.json'
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import '../login/login.css';
 

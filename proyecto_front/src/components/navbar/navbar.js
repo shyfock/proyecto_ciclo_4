@@ -2,15 +2,19 @@ import React from 'react';
 import { Container, Navbar, Nav, Dropdown, DropdownButton, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle, faSeedling } from '@fortawesome/free-solid-svg-icons'
-import { deleteToken } from '../helper/token'
+import Cookies from 'universal-cookie/es6';
+//import { deleteToken } from '../helper/token'
 
 import './navbar.css';
+
+const cookies = new Cookies();
 
 export default class Menu extends React.Component {
     constructor(props) {
         super(props);
         this.state = { }
     }
+
     render() {
         return (
             <Navbar id="navbar" bg="primary" variant="dark" fixed="top">
@@ -38,8 +42,9 @@ export default class Menu extends React.Component {
                                 <Dropdown.Item href="/login">Iniciar sesión</Dropdown.Item>
                                 <Dropdown.Item href="/register">Crear cuenta</Dropdown.Item>
                                 <Dropdown.Item
-                                    onClick={() => deleteToken()}
-                                    href="/"
+                                    onClick={() => cookies.set('_s', '', {
+                                            path: '/login'
+                                    })}
                                 >
                                     Cerrar sesión
                                 </Dropdown.Item>

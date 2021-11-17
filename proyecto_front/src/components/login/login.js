@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSeedling } from '@fortawesome/free-solid-svg-icons'
-import { API_HOST as host } from '../app.json'
-import { setToken } from '../helper/token'
+import { API_HOST as host } from '../../app.json'
+//import { setToken } from '../helper/token'
 import './login.css';
 import { isNull } from 'util';
 import Cookies from 'universal-cookie'
@@ -32,7 +32,7 @@ class Login extends Component {
             if(isNull(response.data.token)) {
                 alert('Usuario y/o contraseña invalida');
             } else {
-                setToken(response.data.token);
+                //setToken(response.data.token);
                 cookies.set('_s', response.data.token, {
                     path: '/',
                     expires: calculateSessionExpiration(),
