@@ -13,7 +13,7 @@ export default class Menu extends React.Component {
     }
     render() {
         return (
-            <Navbar id="navbar" bg="primary" variant="dark">
+            <Navbar id="navbar" bg="primary" variant="dark" fixed="top">
                 <Container>
                     <Navbar.Brand href="/home">
                     <FontAwesomeIcon icon={faSeedling} />

@@ -37,6 +37,7 @@ class Login extends Component {
                     path: '/',
                     expires: calculateSessionExpiration(),
                 });
+                this.props.history.push('/empleados');
             }
             this.setState({ loading: false });
         })
