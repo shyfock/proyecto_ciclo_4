@@ -1,5 +1,5 @@
 import { isUndefined } from 'util'
-import Cookies from 'universal-cookie/es6'
+import Cookies from 'universal-cookie'
 import axios from 'axios';
 import { API_HOST as host } from '../../app.json'
 

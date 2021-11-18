@@ -13,7 +13,7 @@ import Loading from '../loading/loading';
 
 const cookies = new Cookies();
 
-class Login extends Component {
+class login extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -32,6 +32,7 @@ class Login extends Component {
             if(isNull(response.data.token)) {
                 alert('Usuario y/o contraseña invalida');
             } else {
+                console.log(response);
                 //setToken(response.data.token);
                 cookies.set('_s', response.data.token, {
                     path: '/',
@@ -117,4 +118,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default login;
