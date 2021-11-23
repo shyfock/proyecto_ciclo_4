@@ -33,5 +33,13 @@ export const request = {
                 Authorization: `Bearer ${token}`,
             }
         });
-    }
+    },
+    post: function(services, data) {
+        let token = renewSession();
+        return axios.post(`${host}${services}`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+    },
 }

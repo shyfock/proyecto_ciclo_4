@@ -42,9 +42,13 @@ export default class Menu extends React.Component {
                                 <Dropdown.Item href="/login">Iniciar sesión</Dropdown.Item>
                                 <Dropdown.Item href="/register">Crear cuenta</Dropdown.Item>
                                 <Dropdown.Item
-                                    onClick={() => cookies.set('_s', '', {
-                                            path: '/login'
-                                    })}
+                                    onClick={() =>{ 
+                                        cookies.remove('_s', {
+                                            path: '/',
+                                            domain: 'localhost'
+                                        });
+                                        window.location.replace('/login');
+                                    }}
                                 >
                                     Cerrar sesión
                                 </Dropdown.Item>
