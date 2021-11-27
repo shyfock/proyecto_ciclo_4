@@ -63,6 +63,7 @@ class login extends Component {
                         </Row>
                         <Row>
                             <h2>Iniciar Sesión</h2>
+                            <a href="/register">Ir a registro...</a>
                         </Row>
                     </Col>
                     <Col

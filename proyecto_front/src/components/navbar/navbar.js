@@ -15,6 +15,13 @@ export default class Menu extends React.Component {
         this.state = { }
     }
 
+    logOut() {
+        cookies.remove('_s', {
+            path: '/',
+            domain: 'localhost'
+        });
+        window.location.reload();
+    }
     render() {
         return (
             <Navbar id="navbar" bg="primary" variant="dark" fixed="top">
@@ -42,13 +49,7 @@ export default class Menu extends React.Component {
                                 <Dropdown.Item href="/login">Iniciar sesión</Dropdown.Item>
                                 <Dropdown.Item href="/register">Crear cuenta</Dropdown.Item>
                                 <Dropdown.Item
-                                    onClick={() =>{ 
-                                        cookies.remove('_s', {
-                                            path: '/',
-                                            domain: 'localhost'
-                                        });
-                                        window.location.replace('/login');
-                                    }}
+                                    onClick={() =>{this.logOut()}}
                                 >
                                     Cerrar sesión
                                 </Dropdown.Item>

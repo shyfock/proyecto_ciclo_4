@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Form, Row } from 'react-bootstrap';
-import Button from '@restart/ui/esm/Button';
+import { Container, Form, Row, Button } from 'react-bootstrap';
 import { request } from '../../helper/helper';
 import Loading from '../../loading/loading';
 
@@ -34,12 +33,15 @@ class EmpleadosCrear extends React.Component {
         request
             .post('/empleados', this.state.empleado)
             .then((response) => {
+                if(response.data.exito){
+                    this.props.changeTab('buscar');
+                }
                 this.setState({loading: false});
                 console.log(response.data);
             })
             .catch((err) => {
                 console.error(err);
-                this.setState({loading: false});
+                this.setState({loading: true});
             });
     }
 
@@ -89,7 +91,10 @@ class EmpleadosCrear extends React.Component {
                         />
                     </Form.Group>
                     
-                    <Button className="btn-primary" variant="primary" onClick={() => console.log(this.guardarEmpleados())}>
+                    <Button 
+                        // className="btn-primary" 
+                        variant="primary" 
+                        onClick={() => console.log(this.guardarEmpleados())}>
                         Guardar Empleado
                     </Button>
                 </Form>

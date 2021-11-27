@@ -11,7 +11,7 @@ import DataGrid from '../../grid/grid';
 const columns = [
 {
     dataField: '_id',
-    text: 'ID',
+    text: 'Product ID',
     hidden: true
 },
 {
@@ -43,9 +43,15 @@ export default class EmpleadosBuscar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {}
+        this.onClickEditButton = this.onClickEditButton.bind(this);
     }
 
     componentDidMount() {}
+
+    onClickEditButton(row) {
+        this.props.setIdEmpleado(row._id);
+        this.props.changeTab('editar');
+    }
     
     render() {
 
@@ -57,7 +63,12 @@ export default class EmpleadosBuscar extends React.Component {
                     </h2>
                 </Row>
                 <Row>
-                    <DataGrid url="/empleados" columns={ columns }/>
+                    <DataGrid
+                        url="/empleados"
+                        columns={ columns }
+                        showEditButton={true}
+                        onClickEditButton={this.onClickEditButton}
+                    />
                 </Row>
             </Container>
         );

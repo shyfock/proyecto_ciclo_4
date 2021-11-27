@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react'
 import { API_HOST as host } from '../../app.json'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSeedling } from '@fortawesome/free-solid-svg-icons'
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 import '../login/login.css';
 
@@ -34,10 +36,14 @@ class Register extends Component {
                 <Row>
                     <Col>
                         <Row>
-                            <h1>Eco Tripulantes</h1>
+                            <h1>
+                                <FontAwesomeIcon icon={faSeedling} />
+                                Eco Tripulantes
+                            </h1>
                         </Row>
                         <Row>
                             <h2>Crear cuenta de usuario</h2>
+                            <a href="/login">Ya tengo una cuenta...</a>
                         </Row>
                     </Col>
                     <Col
