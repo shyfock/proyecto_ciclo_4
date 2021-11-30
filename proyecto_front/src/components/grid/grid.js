@@ -13,7 +13,7 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import { request } from '../helper/helper';
 import Loading from '../loading/loading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 const { SearchBar } = Search;
 
@@ -26,6 +26,9 @@ class DataGrid extends React.Component {
         };
         if (this.props.showEditButton && !this.existsColumn('Editar'))
         this.props.columns.push(this.getEditButton());
+
+        if (this.props.showDeleteButton && !this.existsColumn('Eliminar'))
+        this.props.columns.push(this.getDeleteButton());
     }
 
     componentDidMount() {
@@ -67,6 +70,21 @@ class DataGrid extends React.Component {
                 )
             }
         }
+    }
+
+    getDeleteButton() {
+        return ({
+            text: 'Eliminar',
+            formatter: (cell, row) => {
+                return (
+                    <Button 
+                        onClick={() => this.props.onClickDeleteButton(row)}
+                    >
+                        <FontAwesomeIcon icon={ faTrash } />
+                    </Button>
+                )
+            }
+        })
     }
 
     render() {
