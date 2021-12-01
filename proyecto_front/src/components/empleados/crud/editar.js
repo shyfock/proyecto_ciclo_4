@@ -4,6 +4,7 @@ import { request } from '../../helper/helper';
 import Loading from '../../loading/loading';
 import '../empleados.css'
 import ConfirmationPrompts from '../../prompts/confirmation';
+import MessagePrompt from '../../prompts/messages';
 
 
 class EmpleadosEditar extends React.Component {
@@ -31,6 +32,7 @@ class EmpleadosEditar extends React.Component {
                 direccion: '',
             }
         }
+        this.onExitedMessage = this.onExitedMessage.bind(this);
         this.onCancel = this.onCancel.bind(this);
         this.onConfirm = this.onConfirm.bind(this);
     }
@@ -86,8 +88,12 @@ class EmpleadosEditar extends React.Component {
             })
             .catch((err) => {
                 console.error(err);
-                this.setState({loading: false});
+                this.setState({ loading: false });
             });
+    }
+
+    onExitedMessage() {
+        if(this.state.redirect) this.props.changeTab('buscar');
     }
 
     onCancel() {
@@ -115,6 +121,12 @@ class EmpleadosEditar extends React.Component {
     render() { 
         return (
             <Container id="empleados-crear-container">
+                <MessagePrompt
+                    text={this.state.message.text}
+                    show={this.state.message.show}
+                    duration={2500}
+                    onExited={this.onExitedMessage}
+                />
                 <ConfirmationPrompts
                     show={this.state.confirmation.show}
                     title={this.state.confirmation.title}
